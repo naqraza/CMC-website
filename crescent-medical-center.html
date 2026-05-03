@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crescent Medical Center — Primary Care in Johnston, RI</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #006aff;
+  --blue-dark: #0051c3;
+  --teal: #00a3a3;
+  --black: #1d1d1f;
+  --gray1: #f5f5f7;
+  --gray2: #e8e8ed;
+  --gray3: #6e6e73;
+  --gray4: #aeaeb2;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  height: 52px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+}
+
+.nav-logo {
+  font-size: 17px; font-weight: 600; color: var(--black);
+  text-decoration: none; letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 28px; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+
+.nav-links a {
+  font-size: 13px; color: var(--black); text-decoration: none;
+  opacity: 0.8; transition: opacity 0.15s; letter-spacing: -0.01em;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+.nav-cta {
+  font-size: 13px; font-weight: 500; color: var(--blue) !important;
+  opacity: 1 !important; text-decoration: none; letter-spacing: -0.01em;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,163,163,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,106,255,0.05) 0%, transparent 60%);
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 860px; }
+
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gray1); border-radius: 20px;
+  padding: 6px 14px; font-size: 13px; font-weight: 500;
+  color: var(--teal); margin-bottom: 28px; letter-spacing: -0.01em;
+}
+
+.hero-chip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
+
+h1 {
+  font-size: clamp(48px, 7vw, 96px); font-weight: 700;
+  line-height: 1.04; letter-spacing: -0.04em;
+  color: var(--black); margin-bottom: 20px;
+}
+
+h1 span {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2vw, 21px); font-weight: 400;
+  color: var(--gray3); line-height: 1.55; letter-spacing: -0.01em;
+  max-width: 560px; margin: 0 auto 40px;
+}
+
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 14px 28px; border-radius: 980px;
+  font-size: 17px; font-weight: 400; text-decoration: none;
+  letter-spacing: -0.01em; transition: all 0.2s;
+}
+
+.btn-fill { background: var(--blue); color: white; }
+.btn-fill:hover { background: var(--blue-dark); transform: scale(1.02); }
+.btn-outline { background: var(--gray1); color: var(--blue); }
+.btn-outline:hover { background: var(--gray2); }
+
+.hero-stats {
+  display: flex; margin-top: 80px;
+  border: 1px solid var(--gray2); border-radius: 20px;
+  overflow: hidden; background: var(--gray1);
+}
+
+.hero-stat {
+  flex: 1; padding: 28px 24px; text-align: center;
+  border-right: 1px solid var(--gray2);
+}
+
+.hero-stat:last-child { border-right: none; }
+
+.hero-stat-val {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.03em;
+  color: var(--black); margin-bottom: 4px;
+}
+
+.hero-stat-label { font-size: 13px; color: var(--gray3); letter-spacing: -0.01em; }
+
+/* ABOUT */
+#about { background: var(--gray1); }
+
+.about-wrap {
+  max-width: 1080px; margin: 0 auto; padding: 120px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+}
+
+.about-left .lead { margin-bottom: 40px; }
+
+.eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 16px;
+}
+
+h2 {
+  font-size: clamp(36px, 5vw, 60px); font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1.06;
+  color: var(--black); margin-bottom: 20px;
+}
+
+.lead {
+  font-size: 19px; color: var(--gray3); line-height: 1.55;
+  letter-spacing: -0.01em; max-width: 560px; font-weight: 400;
+}
+
+.doctor-cards { display: flex; flex-direction: column; gap: 14px; }
+
+.doctor-card {
+  background: white; border-radius: 18px; padding: 24px 28px;
+  display: flex; align-items: flex-start; gap: 18px;
+}
+
+.doctor-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: white; font-weight: 700; font-size: 16px;
+  letter-spacing: -0.02em; flex-shrink: 0;
+}
+
+.doctor-role {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 4px;
+}
+
+.doctor-name { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 4px; }
+.doctor-title { font-size: 14px; color: var(--gray3); line-height: 1.5; }
+
+.about-right { display: flex; flex-direction: column; gap: 16px; }
+
+.credential-card {
+  background: white; border-radius: 18px; padding: 26px 28px;
+  display: flex; align-items: center; gap: 18px;
+}
+
+.credential-icon { font-size: 30px; flex-shrink: 0; }
+.credential-text { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--black); margin-bottom: 3px; }
+.credential-sub { font-size: 14px; color: var(--gray3); }
+
+/* SERVICES */
+#services { background: var(--white); }
+
+.services-header { max-width: 1080px; margin: 0 auto; padding: 120px 48px 56px; }
+
+.services-grid {
+  max-width: 1080px; margin: 0 auto; padding: 0 48px 120px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+
+.service-card {
+  background: var(--gray1); border-radius: 20px; padding: 36px 30px;
+  transition: transform 0.25s, background 0.2s; cursor: default;
+}
+
+.service-card:hover { transform: scale(1.02); background: #ebebf0; }
+.service-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+.service-name { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 10px; }
+.service-desc { font-size: 15px; color: var(--gray3); line-height: 1.6; }
+
+/* APPOINTMENT */
+#appointment { background: var(--black); }
+
+.appt-wrap {
+  max-width: 1080px; margin: 0 auto; padding: 120px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+
+.appt-left h2 { color: white; }
+.appt-left .eyebrow { color: var(--teal); }
+.appt-left .lead { color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+
+.appt-type-tabs { display: flex; gap: 8px; }
+
+.appt-tab {
+  flex: 1; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
+  padding: 14px 10px; text-align: center; color: rgba(255,255,255,0.65);
+  font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  letter-spacing: -0.01em;
+}
+
+.appt-tab:hover, .appt-tab.active {
+  background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); color: white;
+}
+
+.appt-tab-icon { font-size: 20px; display: block; margin-bottom: 6px; }
+
+.appt-form-wrap { background: white; border-radius: 24px; padding: 44px; }
+
+.form-heading { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 28px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+  display: block; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--gray3); margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 13px 16px;
+  background: var(--gray1); border: 1.5px solid transparent;
+  border-radius: 12px; font-family: inherit; font-size: 16px;
+  color: var(--black); outline: none;
+  transition: border-color 0.15s, background 0.15s; appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--blue); background: white; }
+
+.form-group textarea { resize: none; height: 90px; }
+
+.form-btn {
+  width: 100%; background: var(--blue); color: white; border: none;
+  border-radius: 980px; padding: 16px; font-family: inherit;
+  font-size: 17px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s; letter-spacing: -0.01em; margin-top: 6px;
+}
+
+.form-btn:hover { background: var(--blue-dark); }
+
+.form-privacy { font-size: 12px; color: var(--gray4); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+/* PORTAL */
+#portal { background: var(--gray1); }
+
+.portal-wrap { max-width: 1080px; margin: 0 auto; padding: 120px 48px; text-align: center; }
+.portal-wrap h2 { margin-bottom: 16px; }
+.portal-wrap .lead { margin: 0 auto 60px; }
+
+.portal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+.portal-card {
+  background: white; border-radius: 20px; padding: 40px 28px;
+  text-decoration: none; display: block;
+  transition: transform 0.2s, box-shadow 0.2s; text-align: left;
+}
+
+.portal-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+.portal-icon { font-size: 36px; margin-bottom: 20px; display: block; }
+.portal-name { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--black); margin-bottom: 8px; }
+.portal-desc { font-size: 15px; color: var(--gray3); line-height: 1.55; }
+.portal-arrow { display: inline-flex; align-items: center; gap: 4px; margin-top: 20px; font-size: 14px; font-weight: 500; color: var(--blue); }
+
+/* CONTACT */
+#contact { background: var(--white); }
+
+.contact-wrap {
+  max-width: 1080px; margin: 0 auto; padding: 120px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+
+.info-cards { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+
+.info-card {
+  background: var(--gray1); border-radius: 18px; padding: 24px 28px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+
+.info-card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.info-card-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray3); margin-bottom: 6px; }
+.info-card-value { font-size: 16px; font-weight: 500; color: var(--black); line-height: 1.5; letter-spacing: -0.01em; }
+
+.hours-list { margin-top: 4px; }
+
+.hour-row {
+  display: flex; justify-content: space-between;
+  font-size: 15px; color: var(--black);
+  padding: 7px 0; border-bottom: 1px solid var(--gray2);
+  letter-spacing: -0.01em; font-weight: 400;
+}
+
+.hour-row:last-child { border: none; }
+.hour-row .closed { color: var(--gray4); }
+
+.map-card {
+  border-radius: 24px; overflow: hidden; background: var(--gray1);
+  aspect-ratio: 4/3; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  border: 1px solid var(--gray2);
+}
+
+.map-icon { font-size: 52px; }
+.map-label { font-size: 17px; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
+.map-sub { font-size: 14px; color: var(--gray3); }
+
+.map-link {
+  margin-top: 8px; display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue); color: white; padding: 12px 22px;
+  border-radius: 980px; font-size: 15px; font-weight: 500;
+  text-decoration: none; letter-spacing: -0.01em; transition: background 0.2s;
+}
+
+.map-link:hover { background: var(--blue-dark); }
+
+/* FOOTER */
+footer { background: var(--gray1); border-top: 1px solid var(--gray2); padding: 40px 48px; }
+
+.footer-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.footer-brand { font-size: 15px; font-weight: 600; color: var(--black); letter-spacing: -0.01em; }
+.footer-sub { font-size: 13px; color: var(--gray3); margin-top: 3px; }
+.footer-nav { display: flex; gap: 24px; list-style: none; }
+.footer-nav a { font-size: 13px; color: var(--gray3); text-decoration: none; transition: color 0.15s; }
+.footer-nav a:hover { color: var(--black); }
+.footer-copy { font-size: 13px; color: var(--gray4); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  h1 { letter-spacing: -0.03em; }
+  .hero-stats { flex-direction: column; }
+  .hero-stat { border-right: none; border-bottom: 1px solid var(--gray2); }
+  .hero-stat:last-child { border-bottom: none; }
+  .about-wrap, .appt-wrap, .contact-wrap { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+  .services-header { padding: 80px 24px 40px; }
+  .services-grid { grid-template-columns: 1fr; padding: 0 24px 80px; }
+  .portal-wrap { padding: 80px 24px; }
+  .portal-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .appt-type-tabs { flex-direction: column; }
+  footer { padding: 32px 24px; }
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-nav { flex-wrap: wrap; justify-content: center; }
+  .btn { font-size: 15px; padding: 13px 22px; }
+  .appt-form-wrap { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Crescent Medical</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portal">Patient Portal</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#appointment" class="nav-cta">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-chip">
+      <span class="hero-chip-dot"></span>
+      Now accepting new patients · Johnston, RI
+    </div>
+    <h1>Care that puts<br><span>you first.</span></h1>
+    <p class="hero-sub">Crescent Medical Center brings compassionate, comprehensive primary care to the Johnston community — from preventive wellness to chronic disease management.</p>
+    <div class="hero-actions">
+      <a href="#appointment" class="btn btn-fill">Book an Appointment</a>
+      <a href="#about" class="btn btn-outline">Meet Our Physicians</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">Same-day</div>
+        <div class="hero-stat-label">Appointments available</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">All ages</div>
+        <div class="hero-stat-label">Adult &amp; family care</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Telehealth</div>
+        <div class="hero-stat-label">Video visits available</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">Most plans</div>
+        <div class="hero-stat-label">Insurance accepted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-left">
+      <div class="eyebrow">Our Team</div>
+      <h2>Medicine led by people who care.</h2>
+      <p class="lead">Founded with a simple belief — that every patient deserves a physician who truly knows them. Our team brings deep clinical expertise and genuine warmth to every visit.</p>
+      <div class="doctor-cards">
+        <div class="doctor-card">
+          <div class="doctor-avatar">IH</div>
+          <div>
+            <div class="doctor-role">Founder &amp; Co-Owner</div>
+            <div class="doctor-name">Dr. Iftikhar Hussain</div>
+            <div class="doctor-title">Founding Physician · Crescent Medical Center LLC<br>The vision behind the practice.</div>
+          </div>
+        </div>
+        <div class="doctor-card">
+          <div class="doctor-avatar">N</div>
+          <div>
+            <div class="doctor-role">Medical Director &amp; Co-Owner</div>
+            <div class="doctor-name">Dr. Naqvi</div>
+            <div class="doctor-title">Internal Medicine · Clinical &amp; Operations Lead<br>Board certified. Hands-on. Patient-first.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="credential-card">
+        <div class="credential-icon">🎓</div>
+        <div>
+          <div class="credential-text">Board Certified, Internal Medicine</div>
+          <div class="credential-sub">Evidence-based, up-to-date clinical practice</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <div class="credential-icon">🏥</div>
+        <div>
+          <div class="credential-text">Hospitalist &amp; Primary Care Background</div>
+          <div class="credential-sub">Expertise across the full spectrum of medicine</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <div class="credential-icon">🤝</div>
+        <div>
+          <div class="credential-text">Accepting New Patients</div>
+          <div class="credential-sub">Most major insurance plans accepted</div>
+        </div>
+      </div>
+      <div class="credential-card">
+        <div class="credential-icon">📍</div>
+        <div>
+          <div class="credential-text">Johnston, Rhode Island</div>
+          <div class="credential-sub">1308 Atwood Ave · Convenient parking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="eyebrow">Services</div>
+    <h2>Everything primary care<br>should be.</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🩺</span>
+      <div class="service-name">Preventive Care</div>
+      <p class="service-desc">Annual physicals, health screenings, immunizations, and lifestyle counseling to keep you at your best.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">❤️</span>
+      <div class="service-name">Chronic Disease Management</div>
+      <p class="service-desc">Ongoing care for diabetes, hypertension, heart disease, asthma, and other long-term conditions.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <div class="service-name">Acute &amp; Urgent Visits</div>
+      <p class="service-desc">Same-day and next-day appointments for illnesses, injuries, and urgent concerns.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💊</span>
+      <div class="service-name">Medication Management</div>
+      <p class="service-desc">Thoughtful prescribing, refill management, and reviews for safe, effective treatment.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💻</span>
+      <div class="service-name">Telehealth Visits</div>
+      <p class="service-desc">Convenient video appointments for follow-ups, medication questions, and non-urgent concerns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="appt-wrap">
+    <div class="appt-left">
+      <div class="eyebrow">Get Started</div>
+      <h2>Book your visit.</h2>
+      <p class="lead">Fill out the form and we'll confirm within one business day. For urgent needs, call us at <a href="tel:4012279036" style="color:var(--teal);text-decoration:none;">(401) 227-9036</a>.</p>
+      <div class="appt-type-tabs" style="margin-top:32px;">
+        <div class="appt-tab active" onclick="setType('In-Person',this)">
+          <span class="appt-tab-icon">🏥</span>In-Person
+        </div>
+        <div class="appt-tab" onclick="setType('Telehealth',this)">
+          <span class="appt-tab-icon">💻</span>Telehealth
+        </div>
+        <div class="appt-tab" onclick="setType('New Patient',this)">
+          <span class="appt-tab-icon">🆕</span>New Patient
+        </div>
+      </div>
+    </div>
+    <div class="appt-form-wrap">
+      <div id="form-view">
+        <div class="form-heading">Request an Appointment</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="f-first" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="f-last" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" id="f-dob">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="f-phone" placeholder="(401) 555-0000">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="f-email" placeholder="jane@example.com">
+        </div>
+        <div class="form-group">
+          <label>Insurance Provider</label>
+          <input type="text" id="f-insurance" placeholder="e.g. Blue Cross, Medicare, Uninsured">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" id="f-date">
+          </div>
+          <div class="form-group">
+            <label>Preferred Time</label>
+            <select id="f-time">
+              <option value="">No preference</option>
+              <option>Morning (8:30–11:00 AM)</option>
+              <option>Midday (11:00 AM–1:00 PM)</option>
+              <option>Afternoon (1:00–4:30 PM)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Visit Type</label>
+          <select id="f-visit">
+            <option>Annual Physical</option>
+            <option>Sick Visit</option>
+            <option>Follow-up</option>
+            <option>New Patient</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Reason for Visit (optional)</label>
+          <textarea id="f-reason" placeholder="Briefly describe your concern or what you'd like to discuss…"></textarea>
+        </div>
+        <input type="hidden" id="f-appt-type" value="In-Person">
+        <button class="form-btn" onclick="submitForm()">Request Appointment</button>
+        <p class="form-privacy">Your information is private and protected. We never share your data.</p>
+      </div>
+
+      <div id="success-view" style="display:none; text-align:center; padding: 40px 0;">
+        <div style="font-size:56px; margin-bottom:20px;">✅</div>
+        <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em; color:var(--black); margin-bottom:12px;">Request Sent!</div>
+        <p style="font-size:16px; color:var(--gray3); line-height:1.6; max-width:320px; margin:0 auto 28px;">We've received your appointment request and will be in touch within one business day to confirm.</p>
+        <p style="font-size:14px; color:var(--gray4);">Questions? Call us at <a href="tel:4012279036" style="color:var(--blue);">(401) 227-9036</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function setType(type, el) {
+  el.parentElement.querySelectorAll('.appt-tab').forEach(e => e.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('f-appt-type').value = type;
+}
+
+function submitForm() {
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const dob = document.getElementById('f-dob').value;
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const insurance = document.getElementById('f-insurance').value.trim();
+  const date = document.getElementById('f-date').value;
+  const time = document.getElementById('f-time').value;
+  const visit = document.getElementById('f-visit').value;
+  const reason = document.getElementById('f-reason').value.trim();
+  const apptType = document.getElementById('f-appt-type').value;
+
+  if (!first || !last || !phone) {
+    alert('Please fill in at least your name and phone number.');
+    return;
+  }
+
+  const subject = encodeURIComponent(`Appointment Request — ${first} ${last} (${visit})`);
+  const body = encodeURIComponent(
+`New Appointment Request — Crescent Medical Center
+=====================================================
+
+PATIENT INFORMATION
+-------------------
+Name:              ${first} ${last}
+Date of Birth:     ${dob || 'Not provided'}
+Phone:             ${phone}
+Email:             ${email || 'Not provided'}
+Insurance:         ${insurance || 'Not provided'}
+
+APPOINTMENT DETAILS
+-------------------
+Appointment Type:  ${apptType}
+Visit Type:        ${visit}
+Preferred Date:    ${date || 'No preference'}
+Preferred Time:    ${time || 'No preference'}
+
+REASON FOR VISIT
+----------------
+${reason || 'None provided'}
+
+=====================================================
+Sent from Crescent Medical Center website`
+  );
+
+  window.location.href = `mailto:cmcfax0854@gmail.com?subject=${subject}&body=${body}`;
+
+  setTimeout(() => {
+    document.getElementById('form-view').style.display = 'none';
+    document.getElementById('success-view').style.display = 'block';
+  }, 800);
+}
+</script>
+
+<!-- PORTAL -->
+<section id="portal">
+  <div class="portal-wrap">
+    <div class="eyebrow">Patient Resources</div>
+    <h2>Your health,<br>at your fingertips.</h2>
+    <p class="lead">Access records, request refills, and message your care team — all in one secure place.</p>
+    <div class="portal-grid">
+      <a href="#" class="portal-card">
+        <span class="portal-icon">📋</span>
+        <div class="portal-name">Health Records</div>
+        <p class="portal-desc">View visit summaries, lab results, and your complete medical history.</p>
+        <div class="portal-arrow">Access records →</div>
+      </a>
+      <a href="#" class="portal-card">
+        <span class="portal-icon">💊</span>
+        <div class="portal-name">Rx Refills</div>
+        <p class="portal-desc">Request prescription refills quickly and conveniently online.</p>
+        <div class="portal-arrow">Request refill →</div>
+      </a>
+      <a href="#" class="portal-card">
+        <span class="portal-icon">✉️</span>
+        <div class="portal-name">Message Your Doctor</div>
+        <p class="portal-desc">Send non-urgent questions directly to Dr. Naqvi's care team.</p>
+        <div class="portal-arrow">Send message →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Come see us.</h2>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <div>
+            <div class="info-card-label">Address</div>
+            <div class="info-card-value">1308 Atwood Ave<br>Johnston, RI 02919</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📞</div>
+          <div>
+            <div class="info-card-label">Phone</div>
+            <div class="info-card-value">(401) 227-9036</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🕐</div>
+          <div style="width:100%">
+            <div class="info-card-label">Office Hours</div>
+            <div class="hours-list">
+              <div class="hour-row"><span>Monday – Thursday</span><span>8:30 AM – 4:30 PM</span></div>
+              <div class="hour-row"><span>Friday</span><span>8:30 AM – 3:00 PM</span></div>
+              <div class="hour-row"><span>Saturday</span><span class="closed">Closed</span></div>
+              <div class="hour-row"><span>Sunday</span><span class="closed">Closed</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="map-card">
+        <div class="map-icon">🗺</div>
+        <div class="map-label">Crescent Medical Center</div>
+        <div class="map-sub">1308 Atwood Ave, Johnston, RI</div>
+        <a href="https://maps.google.com/?q=1308+Atwood+Ave+Johnston+RI+02919" target="_blank" class="map-link">Open in Maps ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Crescent Medical Center LLC</div>
+      <div class="footer-sub">Primary Care · Johnston, Rhode Island</div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#appointment">Appointments</a></li>
+      <li><a href="#portal">Patient Portal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Crescent Medical Center LLC</div>
+  </div>
+</footer>
+
+</body>
+</html>
